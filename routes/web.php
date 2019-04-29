@@ -21,13 +21,21 @@ Route::get('/about', function () {
 
 Route::get('/blog', 'PostController@index');
 
-// Route::get('/blog/{id}', ['as' => 'post.detail', function($id) {
-//     echo "<h1>This is post $id </h1>";
-//     echo "<h2>This is the body of post $id</h2>";
-//     echo '<a href="/blog">Return</a>';
-// }]);
+Route::get('/insert', function() {
+    $data = [
+        'title' => 'Contoh insert judul berita',
+        'body' => 'ini adalah contoh insert body dari berita dengan tipe data teks',
+        'user_id' => 2
+    ];
+    DB::table('posts')->insert($data);
+    echo 'data berhasil disimpan';
+});
 
-// Route::get('/post/create', 'PostController@create');
-// Route::post('/post/store', 'PostController@store');
+Route::get('/read', function() {
+    $query = DB::table('posts')->select('title','body')->where('id',1)->get();
+    echo '<pre>';
+    print_r($query);
+    echo '</pre>';
+});
 
 Route::resource('/post', 'PostController');
