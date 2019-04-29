@@ -1,4 +1,8 @@
-@extends('template')
+@extends('layouts.template')
+
+@section('title')
+    Form Create Post
+@endsection
 
 @section('content')
 <div class="content">

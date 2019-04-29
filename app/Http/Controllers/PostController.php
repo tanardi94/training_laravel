@@ -13,7 +13,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        return "Ini adalah index dari post controller";
+        $num = 5;
+        $posts = [];
+        while($num--)
+        {
+            array_push($posts, ['id' => $num, 'title' => 'Post body '.$num]);
+        }
+        return view('index', compact('posts'));
     }
 
     /**
